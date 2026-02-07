@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Psychedelic BW Dashboard</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap');
+
+:root {
+  --bg: #000;
+  --fg: #fff;
+  --muted: #888;
+  --card: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  background:
+    repeating-radial-gradient(
+      circle at 50% 50%,
+      rgba(255,255,255,0.04) 0px,
+      rgba(255,255,255,0.04) 2px,
+      transparent 4px,
+      transparent 8px
+    );
+  animation: swirl 40s linear infinite;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+@keyframes swirl {
+  from { transform: rotate(0deg) scale(1); }
+  to   { transform: rotate(360deg) scale(1.1); }
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  padding: 24px;
+  border-right: 1px solid var(--border);
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+}
+
+.nav a {
+  display: block;
+  padding: 12px 0;
+  color: var(--muted);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  color: var(--fg);
+  letter-spacing: 1px;
+}
+
+.main {
+  padding: 32px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.balance {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  position: relative;
+  padding: 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.08),
+    transparent
+  );
+  animation: shimmer 6s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-weight: 500;
+}
+
+.card p {
+  margin: 0 0 16px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.card .price {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.stats {
+  margin-top: 40px;
+  display: flex;
+  gap: 24px;
+}
+
+.stat {
+  flex: 1;
+  padding: 16px;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.stat span {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+}
+</style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <aside class="sidebar">
+      <div class="logo">grim</div>
+      <nav class="nav">
+        <a href="#">Dashboard</a>
+        <a href="#">Products</a>
+        <a href="#">Licenses</a>
+        <a href="#">Orders</a>
+        <a href="#">Account</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="header">
+        <h1>Shop Dashboard</h1>
+        <div class="balance">Balance: 0xFFFFFF</div>
+      </div>
+
+      <section class="grid">
+        <div class="card">
+          <h3>Lifetime Access</h3>
+          <p>Full unlock. No expiry.</p>
+          <div class="price">∞</div>
+        </div>
+
+        <div class="card">
+          <h3>Weekly Key</h3>
+          <p>Short‑term access.</p>
+          <div class="price">07</div>
+        </div>
+
+        <div class="card">
+          <h3>Private Build</h3>
+          <p>Invite‑only. Obfuscated.</p>
+          <div class="price">—</div>
+        </div>
+
+        <div class="card">
+          <h3>API Slot</h3>
+          <p>Automation interface.</p>
+          <div class="price">λ</div>
+        </div>
+      </section>
+
+      <section class="stats">
+        <div class="stat">
+          <strong>124</strong>
+          <span>Active Users</span>
+        </div>
+        <div class="stat">
+          <strong>999+</strong>
+          <span>Transactions</span>
+        </div>
+        <div class="stat">
+          <strong>100%</strong>
+          <span>Uptime</span>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
