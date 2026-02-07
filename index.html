@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>grim.xyz</title>
-
+<title>grim  |  streamlining cheats</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap');
 
@@ -14,6 +13,7 @@
   --muted: #888;
   --card: rgba(255,255,255,0.04);
   --border: rgba(255,255,255,0.15);
+  --accent: #ff00ff;
 }
 
 * {
@@ -52,19 +52,26 @@ body::before {
 
 .wrapper {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 220px 1fr;
   min-height: 100vh;
 }
 
 .sidebar {
   padding: 24px;
   border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .logo {
   font-weight: 700;
   letter-spacing: 2px;
   margin-bottom: 40px;
+  font-size: 28px;
+  background: linear-gradient(90deg, var(--accent), #00ffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .nav a {
@@ -73,6 +80,7 @@ body::before {
   color: var(--muted);
   text-decoration: none;
   transition: 0.3s;
+  font-weight: 500;
 }
 
 .nav a:hover {
@@ -89,11 +97,15 @@ body::before {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 32px;
+  flex-wrap: wrap;
 }
 
 .header h1 {
-  font-size: 28px;
-  font-weight: 500;
+  font-size: 32px;
+  font-weight: 600;
+  background: linear-gradient(45deg, var(--accent), #00ffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .balance {
@@ -109,12 +121,13 @@ body::before {
 
 .card {
   position: relative;
-  padding: 20px;
+  padding: 24px;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 16px;
   overflow: hidden;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
 }
 
 .card::before {
@@ -127,7 +140,7 @@ body::before {
     rgba(255,255,255,0.08),
     transparent
   );
-  animation: shimmer 6s infinite;
+  animation: shimmer 6s infinite linear;
 }
 
 @keyframes shimmer {
@@ -137,12 +150,13 @@ body::before {
 }
 
 .card:hover {
-  transform: translateY(-6px) scale(1.02);
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 0 30px var(--accent);
 }
 
 .card h3 {
-  margin: 0 0 8px;
-  font-weight: 500;
+  margin: 0 0 12px;
+  font-weight: 600;
 }
 
 .card p {
@@ -154,20 +168,40 @@ body::before {
 .card .price {
   font-weight: 700;
   letter-spacing: 1px;
+  font-size: 20px;
+  color: var(--accent);
 }
 
 .stats {
-  margin-top: 40px;
+  margin-top: 48px;
   display: flex;
   gap: 24px;
+  flex-wrap: wrap;
 }
 
 .stat {
   flex: 1;
-  padding: 16px;
+  padding: 20px;
   border: 1px dashed var(--border);
   border-radius: 12px;
   text-align: center;
+  transition: 0.3s;
+}
+
+.stat:hover {
+  background: rgba(255,255,255,0.03);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent);
+}
+
+.stat strong {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  background: linear-gradient(45deg, var(--accent), #00ffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .stat span {
@@ -177,18 +211,19 @@ body::before {
 }
 </style>
 </head>
-
 <body>
   <div class="wrapper">
     <aside class="sidebar">
-      <div class="logo">grim</div>
-      <nav class="nav">
-        <a href="#">Dashboard</a>
-        <a href="#">Products</a>
-        <a href="#">Licenses</a>
-        <a href="#">Orders</a>
-        <a href="#">Account</a>
-      </nav>
+      <div>
+        <div class="logo">grim</div>
+        <nav class="nav">
+          <a href="#">Dashboard</a>
+          <a href="#">Products</a>
+          <a href="#">Licenses</a>
+          <a href="#">Orders</a>
+          <a href="#">Account</a>
+        </nav>
+      </div>
     </aside>
 
     <main class="main">
