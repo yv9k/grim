@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>grim  |  streamlining cheats</title>
+<title>grim | streamlining cheats</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap');
 
@@ -60,7 +60,6 @@ body::before {
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .logo {
@@ -77,6 +76,11 @@ body::before {
   text-decoration: none;
   transition: 0.3s;
   font-weight: 500;
+}
+
+.nav a.current {
+  color: var(--fg);
+  font-weight: 700;
 }
 
 .nav a:hover {
@@ -203,67 +207,98 @@ body::before {
 </style>
 </head>
 <body>
-  <div class="wrapper">
-    <aside class="sidebar">
-      <div>
-        <div class="logo">grim</div>
-        <nav class="nav">
-          <a href="#">Dashboard</a>
-          <a href="#">Products</a>
-          <a href="#">Licenses</a>
-          <a href="#">Orders</a>
-          <a href="#">Account</a>
-        </nav>
+<div class="wrapper">
+  <aside class="sidebar">
+    <div>
+      <div class="logo">grim</div>
+      <nav class="nav">
+        <a href="#" class="current" onclick="showDashboard()">Dashboard</a>
+        <a href="#" onclick="showOverview()">Overview</a>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="header">
+      <h1 id="page-title">Dashboard</h1>
+      <div class="balance">Balance: 0xFFFFFF</div>
+    </div>
+
+    <section class="grid" id="dashboard-view">
+      <a href="https://example.com/download/cs2-silent.exe" class="card">
+        <h3>CS2 Silent</h3>
+        <p>Download the latest cheat version for CS2</p>
+        <div class="price">v1.0</div>
+      </a>
+      <a href="https://example.com/download/cs2-blatant.exe" class="card">
+        <h3>CS2 Blatant</h3>
+        <p>Download the latest blatant cheat for CS2</p>
+        <div class="price">v2.3</div>
+      </a>
+      <a href="https://example.com/download/gorilla-tag.exe" class="card">
+        <h3>Gorilla Tag</h3>
+        <p>Download the latest cheat for Gorilla Tag</p>
+        <div class="price">v0.9</div>
+      </a>
+      <a href="https://example.com/download/injector.exe" class="card">
+        <h3>Advanced Injector</h3>
+        <p>Download the latest injector version</p>
+        <div class="price">v1.5</div>
+      </a>
+    </section>
+
+    <section class="grid" id="overview-view" style="display:none;">
+      <div class="card">
+        <h3>CS2 Silent</h3>
+        <p>Status: <strong>Undetected</strong></p>
       </div>
-    </aside>
-
-    <main class="main">
-      <div class="header">
-        <h1>Game Binaries</h1>
-        <div class="balance">Balance: 0xFFFFFF</div>
+      <div class="card">
+        <h3>CS2 Blatant</h3>
+        <p>Status: <strong>Detected</strong></p>
       </div>
+      <div class="card">
+        <h3>Gorilla Tag</h3>
+        <p>Status: <strong>Down for Update</strong></p>
+      </div>
+      <div class="card">
+        <h3>Advanced Injector</h3>
+        <p>Status: <strong>Undetected</strong></p>
+      </div>
+    </section>
 
-      <section class="grid">
-        <a href="downloads/game1.exe" class="card" download>
-          <h3>Game A Binary</h3>
-          <p>Download the latest cheat for Game A</p>
-          <div class="price">v1.0</div>
-        </a>
+    <section class="stats">
+      <div class="stat">
+        <strong>124</strong>
+        <span>Active Users</span>
+      </div>
+      <div class="stat">
+        <strong>999+</strong>
+        <span>Downloads</span>
+      </div>
+      <div class="stat">
+        <strong>100%</strong>
+        <span>Uptime</span>
+      </div>
+    </section>
+  </main>
+</div>
 
-        <a href="downloads/game2.exe" class="card" download>
-          <h3>Game B Binary</h3>
-          <p>Download the latest cheat for Game B</p>
-          <div class="price">v2.3</div>
-        </a>
+<script>
+function showDashboard(){
+  document.getElementById('dashboard-view').style.display = 'grid';
+  document.getElementById('overview-view').style.display = 'none';
+  document.getElementById('page-title').innerText = 'Dashboard';
+  document.querySelectorAll('.nav a').forEach(a => a.classList.remove('current'));
+  event.target.classList.add('current');
+}
 
-        <a href="downloads/game3.exe" class="card" download>
-          <h3>Game C Binary</h3>
-          <p>Download the latest cheat for Game C</p>
-          <div class="price">v0.9</div>
-        </a>
-
-        <a href="downloads/game4.exe" class="card" download>
-          <h3>Game D Binary</h3>
-          <p>Download the latest cheat for Game D</p>
-          <div class="price">v1.5</div>
-        </a>
-      </section>
-
-      <section class="stats">
-        <div class="stat">
-          <strong>124</strong>
-          <span>Active Users</span>
-        </div>
-        <div class="stat">
-          <strong>999+</strong>
-          <span>Downloads</span>
-        </div>
-        <div class="stat">
-          <strong>100%</strong>
-          <span>Uptime</span>
-        </div>
-      </section>
-    </main>
-  </div>
+function showOverview(){
+  document.getElementById('dashboard-view').style.display = 'none';
+  document.getElementById('overview-view').style.display = 'grid';
+  document.getElementById('page-title').innerText = 'Overview';
+  document.querySelectorAll('.nav a').forEach(a => a.classList.remove('current'));
+  event.target.classList.add('current');
+}
+</script>
 </body>
 </html>
