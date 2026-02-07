@@ -13,7 +13,6 @@
   --muted: #888;
   --card: rgba(255,255,255,0.04);
   --border: rgba(255,255,255,0.15);
-  --accent: #ff00ff;
 }
 
 * {
@@ -69,9 +68,6 @@ body::before {
   letter-spacing: 2px;
   margin-bottom: 40px;
   font-size: 28px;
-  background: linear-gradient(90deg, var(--accent), #00ffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .nav a {
@@ -103,9 +99,6 @@ body::before {
 .header h1 {
   font-size: 32px;
   font-weight: 600;
-  background: linear-gradient(45deg, var(--accent), #00ffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .balance {
@@ -128,6 +121,8 @@ body::before {
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
+  text-decoration: none;
+  color: var(--fg);
 }
 
 .card::before {
@@ -151,7 +146,7 @@ body::before {
 
 .card:hover {
   transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 0 30px var(--accent);
+  box-shadow: 0 0 20px rgba(255,255,255,0.15);
 }
 
 .card h3 {
@@ -168,8 +163,7 @@ body::before {
 .card .price {
   font-weight: 700;
   letter-spacing: 1px;
-  font-size: 20px;
-  color: var(--accent);
+  font-size: 16px;
 }
 
 .stats {
@@ -190,8 +184,8 @@ body::before {
 
 .stat:hover {
   background: rgba(255,255,255,0.03);
-  border-color: var(--accent);
-  box-shadow: 0 0 20px var(--accent);
+  border-color: var(--fg);
+  box-shadow: 0 0 20px rgba(255,255,255,0.15);
 }
 
 .stat strong {
@@ -199,9 +193,6 @@ body::before {
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 6px;
-  background: linear-gradient(45deg, var(--accent), #00ffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .stat span {
@@ -228,34 +219,34 @@ body::before {
 
     <main class="main">
       <div class="header">
-        <h1>Shop Dashboard</h1>
+        <h1>Game Binaries</h1>
         <div class="balance">Balance: 0xFFFFFF</div>
       </div>
 
       <section class="grid">
-        <div class="card">
-          <h3>Lifetime Access</h3>
-          <p>Full unlock. No expiry.</p>
-          <div class="price">∞</div>
-        </div>
+        <a href="downloads/game1.exe" class="card" download>
+          <h3>Game A Binary</h3>
+          <p>Download the latest cheat for Game A</p>
+          <div class="price">v1.0</div>
+        </a>
 
-        <div class="card">
-          <h3>Weekly Key</h3>
-          <p>Short‑term access.</p>
-          <div class="price">07</div>
-        </div>
+        <a href="downloads/game2.exe" class="card" download>
+          <h3>Game B Binary</h3>
+          <p>Download the latest cheat for Game B</p>
+          <div class="price">v2.3</div>
+        </a>
 
-        <div class="card">
-          <h3>Private Build</h3>
-          <p>Invite‑only. Obfuscated.</p>
-          <div class="price">—</div>
-        </div>
+        <a href="downloads/game3.exe" class="card" download>
+          <h3>Game C Binary</h3>
+          <p>Download the latest cheat for Game C</p>
+          <div class="price">v0.9</div>
+        </a>
 
-        <div class="card">
-          <h3>API Slot</h3>
-          <p>Automation interface.</p>
-          <div class="price">λ</div>
-        </div>
+        <a href="downloads/game4.exe" class="card" download>
+          <h3>Game D Binary</h3>
+          <p>Download the latest cheat for Game D</p>
+          <div class="price">v1.5</div>
+        </a>
       </section>
 
       <section class="stats">
@@ -265,7 +256,7 @@ body::before {
         </div>
         <div class="stat">
           <strong>999+</strong>
-          <span>Transactions</span>
+          <span>Downloads</span>
         </div>
         <div class="stat">
           <strong>100%</strong>
