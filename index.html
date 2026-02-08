@@ -15,9 +15,7 @@
   --border: rgba(255,255,255,0.15);
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -31,8 +29,7 @@ body::before {
   content: "";
   position: fixed;
   inset: -50%;
-  background:
-    repeating-radial-gradient(
+  background: repeating-radial-gradient(
       circle at 50% 50%,
       rgba(255,255,255,0.04) 0px,
       rgba(255,255,255,0.04) 2px,
@@ -49,161 +46,38 @@ body::before {
   to   { transform: rotate(360deg) scale(1.1); }
 }
 
-.wrapper {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  min-height: 100vh;
-}
+.wrapper { display: grid; grid-template-columns: 220px 1fr; min-height: 100vh; }
 
-.sidebar {
-  padding: 24px;
-  border-right: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-}
+.sidebar { padding: 24px; border-right: 1px solid var(--border); display: flex; flex-direction: column; }
 
-.logo {
-  font-weight: 700;
-  letter-spacing: 2px;
-  margin-bottom: 40px;
-  font-size: 28px;
-}
+.logo { font-weight: 700; letter-spacing: 2px; margin-bottom: 40px; font-size: 28px; }
 
-.nav a {
-  display: block;
-  padding: 12px 0;
-  color: var(--muted);
-  text-decoration: none;
-  transition: 0.3s;
-  font-weight: 500;
-}
+.nav a { display: block; padding: 12px 0; color: var(--muted); text-decoration: none; transition: 0.3s; font-weight: 500; }
+.nav a.current { color: var(--fg); font-weight: 700; }
+.nav a:hover { color: var(--fg); letter-spacing: 1px; }
 
-.nav a.current {
-  color: var(--fg);
-  font-weight: 700;
-}
+.main { padding: 32px; }
 
-.nav a:hover {
-  color: var(--fg);
-  letter-spacing: 1px;
-}
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; flex-wrap: wrap; }
+.header h1 { font-size: 32px; font-weight: 600; }
+.balance { font-size: 14px; opacity: 0.8; }
 
-.main {
-  padding: 32px;
-}
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 32px;
-  flex-wrap: wrap;
-}
+.card { position: relative; padding: 24px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; text-decoration: none; color: var(--fg); }
+.card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(120deg, transparent, rgba(255,255,255,0.08), transparent); animation: shimmer 6s infinite linear; }
+@keyframes shimmer { 0% { transform: translateX(-100%); } 50% { transform: translateX(100%); } 100% { transform: translateX(100%); } }
+.card:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 0 20px rgba(255,255,255,0.15); }
 
-.header h1 {
-  font-size: 32px;
-  font-weight: 600;
-}
+.card h3 { margin: 0 0 12px; font-weight: 600; }
+.card p { margin: 0 0 16px; font-size: 13px; color: var(--muted); }
+.card .price { font-weight: 700; letter-spacing: 1px; font-size: 16px; }
 
-.balance {
-  font-size: 14px;
-  opacity: 0.8;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 24px;
-}
-
-.card {
-  position: relative;
-  padding: 24px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-  text-decoration: none;
-  color: var(--fg);
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.08),
-    transparent
-  );
-  animation: shimmer 6s infinite linear;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  50% { transform: translateX(100%); }
-  100% { transform: translateX(100%); }
-}
-
-.card:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 0 20px rgba(255,255,255,0.15);
-}
-
-.card h3 {
-  margin: 0 0 12px;
-  font-weight: 600;
-}
-
-.card p {
-  margin: 0 0 16px;
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.card .price {
-  font-weight: 700;
-  letter-spacing: 1px;
-  font-size: 16px;
-}
-
-.stats {
-  margin-top: 48px;
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.stat {
-  flex: 1;
-  padding: 20px;
-  border: 1px dashed var(--border);
-  border-radius: 12px;
-  text-align: center;
-  transition: 0.3s;
-}
-
-.stat:hover {
-  background: rgba(255,255,255,0.03);
-  border-color: var(--fg);
-  box-shadow: 0 0 20px rgba(255,255,255,0.15);
-}
-
-.stat strong {
-  display: block;
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-.stat span {
-  display: block;
-  font-size: 12px;
-  color: var(--muted);
-}
+.stats { margin-top: 48px; display: flex; gap: 24px; flex-wrap: wrap; }
+.stat { flex: 1; padding: 20px; border: 1px dashed var(--border); border-radius: 12px; text-align: center; transition: 0.3s; }
+.stat:hover { background: rgba(255,255,255,0.03); border-color: var(--fg); box-shadow: 0 0 20px rgba(255,255,255,0.15); }
+.stat strong { display: block; font-size: 24px; font-weight: 700; margin-bottom: 6px; }
+.stat span { display: block; font-size: 12px; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -225,25 +99,22 @@ body::before {
     </div>
 
     <section class="grid" id="dashboard-view">
-      <a href="https://example.com/cs2-silent.exe" class="card" target="_blank">
+      <a href="https://example.com/cs2-silent.exe" class="card" target="_blank" onclick="incrementDownload()">
         <h3>CS2 Silent</h3>
         <p>Download the latest cheat version for cs2</p>
         <div class="price">v1.0</div>
       </a>
-
-      <a href="https://example.com/cs2-blatant.exe" class="card" target="_blank">
+      <a href="https://example.com/cs2-blatant.exe" class="card" target="_blank" onclick="incrementDownload()">
         <h3>CS2 Blatant</h3>
         <p>Download the latest blatant cheat version for cs2</p>
         <div class="price">v2.3</div>
       </a>
-
-      <a href="https://example.com/gorilla-tag.exe" class="card" target="_blank">
+      <a href="https://example.com/gorilla-tag.exe" class="card" target="_blank" onclick="incrementDownload()">
         <h3>Gorilla Tag</h3>
         <p>Download the latest cheat for Gorilla Tag</p>
         <div class="price">v0.9</div>
       </a>
-
-      <a href="https://example.com/injector.exe" class="card" target="_blank">
+      <a href="https://example.com/injector.exe" class="card" target="_blank" onclick="incrementDownload()">
         <h3>Advanced Injector</h3>
         <p>Download the latest injector version</p>
         <div class="price">v1.5</div>
@@ -253,15 +124,15 @@ body::before {
     <section class="grid" id="overview-view" style="display:none;">
       <div class="card">
         <h3>CS2 Silent</h3>
-        <p>Status: <strong>In development</strong></p>
+        <p>Status: <strong>Undetected</strong></p>
       </div>
       <div class="card">
         <h3>CS2 Blatant</h3>
-        <p>Status: <strong>In development</strong></p>
+        <p>Status: <strong>Detected</strong></p>
       </div>
       <div class="card">
         <h3>Gorilla Tag</h3>
-        <p>Status: <strong>In development</strong></p>
+        <p>Status: <strong>Down for Update</strong></p>
       </div>
       <div class="card">
         <h3>Advanced Injector</h3>
@@ -271,12 +142,12 @@ body::before {
 
     <section class="stats">
       <div class="stat">
-        <strong>124</strong>
-        <span>Active Users</span>
+        <strong id="online-users">0</strong>
+        <span>Users currently online</span>
       </div>
       <div class="stat">
-        <strong>999+</strong>
-        <span>Downloads</span>
+        <strong id="download-count">0</strong>
+        <span>Total Downloads</span>
       </div>
       <div class="stat">
         <strong>99.9%</strong>
@@ -287,6 +158,36 @@ body::before {
 </div>
 
 <script>
+// Track downloads
+let downloads = parseInt(localStorage.getItem('downloads') || 0);
+document.getElementById('download-count').innerText = downloads;
+
+function incrementDownload() {
+  downloads++;
+  localStorage.setItem('downloads', downloads);
+  document.getElementById('download-count').innerText = downloads;
+}
+
+// Track online users using sessionStorage
+function updateOnlineUsers() {
+  let onlineUsers = parseInt(localStorage.getItem('onlineUsers') || 0);
+  if (!sessionStorage.getItem('hasVisited')) {
+    sessionStorage.setItem('hasVisited', 'true');
+    onlineUsers++;
+    localStorage.setItem('onlineUsers', onlineUsers);
+  }
+  document.getElementById('online-users').innerText = onlineUsers;
+}
+
+// Decrease count on tab close
+window.addEventListener('beforeunload', function() {
+  let onlineUsers = parseInt(localStorage.getItem('onlineUsers') || 0);
+  onlineUsers = Math.max(onlineUsers - 1, 0);
+  localStorage.setItem('onlineUsers', onlineUsers);
+});
+
+updateOnlineUsers();
+
 function showDashboard() {
   document.getElementById('dashboard-view').style.display = 'grid';
   document.getElementById('overview-view').style.display = 'none';
