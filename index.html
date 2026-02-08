@@ -142,12 +142,12 @@ body::before {
 
     <section class="stats">
       <div class="stat">
-        <strong id="online-users">0</strong>
-        <span>Users currently online</span>
+        <strong id="visits-count">0</strong>
+        <span>Number of times you have visited this website</span>
       </div>
       <div class="stat">
         <strong id="download-count">0</strong>
-        <span>Total Downloads</span>
+        <span>Number of times you have downloaded cheats</span>
       </div>
       <div class="stat">
         <strong>99.9%</strong>
@@ -158,7 +158,11 @@ body::before {
 </div>
 
 <script>
-// Track downloads
+let visits = parseInt(localStorage.getItem('visits') || 0);
+visits++;
+localStorage.setItem('visits', visits);
+document.getElementById('visits-count').innerText = visits;
+
 let downloads = parseInt(localStorage.getItem('downloads') || 0);
 document.getElementById('download-count').innerText = downloads;
 
@@ -167,26 +171,6 @@ function incrementDownload() {
   localStorage.setItem('downloads', downloads);
   document.getElementById('download-count').innerText = downloads;
 }
-
-// Track online users using sessionStorage
-function updateOnlineUsers() {
-  let onlineUsers = parseInt(localStorage.getItem('onlineUsers') || 0);
-  if (!sessionStorage.getItem('hasVisited')) {
-    sessionStorage.setItem('hasVisited', 'true');
-    onlineUsers++;
-    localStorage.setItem('onlineUsers', onlineUsers);
-  }
-  document.getElementById('online-users').innerText = onlineUsers;
-}
-
-// Decrease count on tab close
-window.addEventListener('beforeunload', function() {
-  let onlineUsers = parseInt(localStorage.getItem('onlineUsers') || 0);
-  onlineUsers = Math.max(onlineUsers - 1, 0);
-  localStorage.setItem('onlineUsers', onlineUsers);
-});
-
-updateOnlineUsers();
 
 function showDashboard() {
   document.getElementById('dashboard-view').style.display = 'grid';
